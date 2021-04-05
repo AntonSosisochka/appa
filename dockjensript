@@ -1,0 +1,4 @@
+#!/bin/bash
+docker build -t jenkins-docker-image -f JenkinsDockerfile .
+docker run -d -p 8080:8080 --name jenkins-docker-container -v /var/run/docker.sock:/var/run/docker.sock jenkins-docker
+docker exec -it jenkins-docker-container cat var/jenkins_home/secrets/initialAdminPassword
